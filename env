@@ -1,3 +1,8 @@
+# Copy to .env and load for dev server with `source .env`
+
+export DEBUG=False
+
 # App.net client details
 export ADN_CLIENT_ID=
 export ADN_CLIENT_SECRET=
+export MONGOHQ_URL=
