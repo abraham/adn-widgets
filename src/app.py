@@ -42,7 +42,7 @@ Routes
 def get_oauth_authenticate():
     url = 'https://alpha.app.net/oauth/authenticate'
     url += '?client_id=' + env('ADN_CLIENT_ID')
-    url += '&redirect_uri=' + urllib.quote_plus('http://local.abrah.am:1234/oauth/callback')
+    url += '&redirect_uri=' + urllib.quote_plus(env('ADN_REDIRECT_URI') + '/oauth/callback')
     url += '&response_type=code'
     url += '&scope=' + urllib.quote_plus('basic stream write_post follow')
     redirect(url)
@@ -169,7 +169,7 @@ def exchange_access_token(code):
         'client_id': env('ADN_CLIENT_ID'),
         'client_secret': env('ADN_CLIENT_SECRET'),
         'grant_type': 'authorization_code',
-        'redirect_uri': 'http://local.abrah.am:1234/oauth/callback',
+        'redirect_uri': env('ADN_REDIRECT_URI') + '/oauth/callback',
         'code': str(code)
     }
     url = 'https://alpha.app.net/oauth/access_token'

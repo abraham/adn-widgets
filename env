@@ -5,4 +5,5 @@ export DEBUG=False
 # App.net client details
 export ADN_CLIENT_ID=
 export ADN_CLIENT_SECRET=
+export ADN_REDIRECT_URI=
 export MONGOHQ_URL=
