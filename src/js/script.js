@@ -121,7 +121,7 @@ adnw.host = adnw.host || 'https://adnwidgets.herokuapp.com';
 
 $script([
   'https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js',
-  'http://consumer.easyxdm.net/current/easyXDM.debug.js',
+  adnw.host + '/easyXDM.debug.js',
   adnw.host + '/core.js'
 ], 'bundle');
 

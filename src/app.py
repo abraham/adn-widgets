@@ -19,6 +19,9 @@ def get_script():
 @get('/provider.js')
 def get_script():
     return static_file('provider.js', root='src/js')
+@get('/easyXDM.debug.js')
+def get_script():
+    return static_file('easyXDM.debug.js', root='src/js')
 
 
 @get('/style.css')
