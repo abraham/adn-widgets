@@ -2,6 +2,7 @@ console.log('core.js:loaded');
 
 var adnw = adnw || {};
 adnw.init = function() {
+  adnw.queue = [];
   adnw.loadAssets();
   adnw.xdm();
   adnw.buildFollowButtons();
@@ -41,6 +42,7 @@ adnw.xdm = function() {
         if (message.method === 'put' && message.action === 'expire') {
           localStorage.setItem('adnwExpire', message.data);
           adnw.expire = message.data
+          adnw.processQueue();
         } else if (message.method === 'post' && message.action === 'follow') {
           console.log('followed', message)
           adnw.buildUnfollowButtons(message.data);
@@ -71,6 +73,7 @@ adnw.toggleFollow = function(event) {
     console.log('authenticating profile');
     adnw.startAuthorization();
     // TODO: queue follow
+    adnw.queue.push(action);
     return false;
   }
   
@@ -136,14 +139,13 @@ adnw.unfollowProfile = function(options) {
       }
     }
   });
-  
-  return;
-  $.delete(adnw.host + '/api/follow', { access_token: options.accessToken, username: options.username }, function(profile, textStatus, jqXHR) {
-    socket.postMessage(JSON.stringify({ 'method': 'delete', 'action': 'follow', 'data': options.username }));
-    if (options.callback) {
-      options.callback(profile);
-    }
+}
+
+adnw.processQueue = function() {
+  $(adnw.queue).each(function(index, item) {
+    adnw.socket.postMessage(JSON.stringify(item));
   });
+  adnw.queue = [];
 }
 
 adnw.currentTime = function() {
