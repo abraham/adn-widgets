@@ -117,7 +117,7 @@ console.log('script.js:loaded');
   * Custom code
   */
 var adnw = adnw || {};
-adnw.host = adnw.host || 'http://local.abrah.am:1234';
+adnw.host = adnw.host || 'https://adnwidgets.herokuapp.com';
 
 $script([
   'https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js',
