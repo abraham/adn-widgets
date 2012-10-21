@@ -2,7 +2,7 @@
 <head>
   <script>
   localStorage.setItem('adnwAccessToken', "{{access_token}}");
-  window.close();
+  // window.close();
   </script>
 </head>
 <body>
