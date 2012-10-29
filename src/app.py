@@ -8,24 +8,25 @@ Assets
 '''
 @get('/')
 def get_slash():
+    redirect('https://alpha.app.net/widgets')
     return 'hello world'
 
-@get('/script.js')
-def get_script():
-    return static_file('script.js', root='src/js')
+@get('/alpha.js')
+def get_alpha():
+    return static_file('alpha.js', root='src/js')
 @get('/core.js')
-def get_script():
+def get_core():
     return static_file('core.js', root='src/js')
 @get('/provider.js')
-def get_script():
+def get_provider():
     return static_file('provider.js', root='src/js')
 @get('/easyXDM.debug.js')
-def get_script():
+def get_easyxdm():
     return static_file('easyXDM.debug.js', root='src/js')
 
 
 @get('/style.css')
-def get_script():
+def get_style():
     return static_file('style.css', root='src/css')
 
 @get('/xdm.html')
